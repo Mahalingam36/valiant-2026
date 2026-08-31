@@ -159,7 +159,7 @@ export default function Home() {
       <header className="topbar">
         <button className="wordmark" onClick={() => scrollTo("home")} aria-label="Back to home"><img src={markImage} alt="" /><span>VALIANT</span><b>2026</b></button>
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Main navigation">
-          <button onClick={() => scrollTo("home")}>Home</button><button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("technical")}>Technical</button><button onClick={() => scrollTo("non-technical")}>Non-Technical</button><button onClick={() => scrollTo("contact")}>Contact</button><button onClick={() => scrollTo("register")}>Register</button>
+          <button onClick={() => scrollTo("home")}>Home</button><button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("technical")}>Technical</button><button onClick={() => scrollTo("non-technical")}>Non-Technical</button><button onClick={() => scrollTo("contact")}>Contact</button><button className="nav-register" onClick={() => scrollTo("register")}>Register <ArrowUpRight size={13} /></button>
         </nav>
         <div className="top-actions"><button className="sound-toggle" onClick={() => setSoundOn(!soundOn)} aria-label={soundOn ? "Mute ambient sound" : "Enable ambient sound"}>{soundOn ? <Pause size={15} /> : <CirclePlay size={15} />} <span>{soundOn ? "SOUND ON" : "SOUND OFF"}</span></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></div>
       </header>

@@ -20,3 +20,5 @@
 - [x] Add supplied venue, time, team size, descriptions, rules, and quiz rounds to each matching event.
 - [x] Add prize details, reporting time, and venue information using the existing 2026 date.
 - [x] Verify the detail interactions on desktop/mobile and save a new checkpoint.
+- [x] Style the top Register navigation item as the lower registration CTA button.
+- [x] Verify the header CTA across desktop/mobile and save a new checkpoint.
