@@ -10,3 +10,5 @@
 - [x] Generate original counterparts for the requested superhero, fantasy, and horror archetypes.
 - [x] Add the expanded character and horror gallery to the microsite.
 - [x] Re-run checks, previews, and checkpoint save for the expanded gallery.
+- [x] Import user-provided Drive assets from “valiant website” and place them as ambient corner visuals.
+- [x] Remove the standalone all-characters section and verify the revised layout.

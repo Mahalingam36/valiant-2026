@@ -32,14 +32,18 @@ const locationImage = "/manus-storage/valiant-location-beacon_88c88ee8.jpg";
 const markImage = "/manus-storage/valiant-mark_55583ff8.png";
 const signalBandImage = "/manus-storage/valiant-signal-band_21293eaf.jpg";
 const arenaFlareImage = "/manus-storage/valiant-arena-flare_7fd97932.jpg";
-const arclightImage = "/manus-storage/valiant-hero-arclight_0eede707.jpg";
-const noirImage = "/manus-storage/valiant-vigilant-noir_d539165a.jpg";
-const mageImage = "/manus-storage/valiant-astral-mage_0da978bf.jpg";
-const orbitForgeImage = "/manus-storage/valiant-orbit-forge_af0ba936.jpg";
-const stormCallerImage = "/manus-storage/valiant-storm-caller_318166f4.jpg";
-const tideWardenImage = "/manus-storage/valiant-tide-warden_e1c00faf.jpg";
-const veilSisterImage = "/manus-storage/valiant-veil-sister_03c84f2c.jpg";
-const arcaneStudentImage = "/manus-storage/valiant-arcane-student_49e59c00.jpg";
+const driveImages = {
+  ironman: "/manus-storage/ironman_c0cd7dc4.jpg",
+  spiderman: "/manus-storage/spiderman_6bddbb0f.jpg",
+  thor: "/manus-storage/thor_7de46931.jpg",
+  harrypotter: "/manus-storage/harrypotter_88050ac7.jpg",
+  harrygroup: "/manus-storage/harrygroup_e1c5a315.jpg",
+  superman: "/manus-storage/superman_6bca66cd.jpg",
+  aquaman: "/manus-storage/aquaman_1dd70568.jpg",
+  wonderwoman: "/manus-storage/wonderwoman_adb776e1.jpg",
+  clown: "/manus-storage/clown_375a5dc7.jpg",
+  nun: "/manus-storage/nun_875d8f95.jpg",
+};
 
 const events = {
   technical: [
@@ -131,6 +135,8 @@ export default function Home() {
         <div className="loader-inner"><img src={markImage} alt="" /><span>INITIALIZING SIGNAL</span><div className="loader-line"><i /></div><strong>VALIANT / 2027</strong></div>
       </div>
       <div className="grain" aria-hidden="true" />
+      <div className="ambient-dock ambient-dock-left" aria-hidden="true"><img className="dock-image dock-spider" src={driveImages.spiderman} alt="" /><img className="dock-image dock-wonder" src={driveImages.wonderwoman} alt="" /><img className="dock-image dock-clown" src={driveImages.clown} alt="" /><img className="dock-image dock-harry" src={driveImages.harrypotter} alt="" /></div>
+      <div className="ambient-dock ambient-dock-right" aria-hidden="true"><img className="dock-image dock-iron" src={driveImages.ironman} alt="" /><img className="dock-image dock-thor" src={driveImages.thor} alt="" /><img className="dock-image dock-aqua" src={driveImages.aquaman} alt="" /><img className="dock-image dock-nun" src={driveImages.nun} alt="" /></div>
       <aside className="signal-rail" aria-label="Section progress">
         <div className="rail-brand"><img src={markImage} alt="Valiant mark" /><span>VLT / 27</span></div>
         <div className="rail-line"><i /><span className="rail-tick tick-1">01</span><span className="rail-tick tick-2">02</span><span className="rail-tick tick-3">03</span><span className="rail-tick tick-4">04</span></div>
@@ -139,7 +145,7 @@ export default function Home() {
       <header className="topbar">
         <button className="wordmark" onClick={() => scrollTo("home")} aria-label="Back to home"><img src={markImage} alt="" /><span>VALIANT</span><b>2027</b></button>
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Main navigation">
-          <button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("cinema")}>Cinema</button><button onClick={() => scrollTo("register")}>Register</button><button onClick={() => scrollTo("location")}>Location</button>
+          <button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("register")}>Register</button><button onClick={() => scrollTo("location")}>Location</button>
         </nav>
         <div className="top-actions"><button className="sound-toggle" onClick={() => setSoundOn(!soundOn)} aria-label={soundOn ? "Mute ambient sound" : "Enable ambient sound"}>{soundOn ? <Pause size={15} /> : <CirclePlay size={15} />} <span>{soundOn ? "SOUND ON" : "SOUND OFF"}</span></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></div>
       </header>
@@ -170,7 +176,6 @@ export default function Home() {
           <motion.div className="event-group non-tech" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>02</span><h3>Non-technical events</h3><p>Play. Decode. Escape.</p></div><div className="event-grid">{events.nonTechnical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={mythicImage} /></motion.div>)}</div></motion.div>
         </section>
 
-        <section id="cinema" className="cinema-section section-pad"><Reveal className="section-head"><div><p className="eyebrow">TRANSMISSION 02C / THE CINEMA UNIVERSE</p><h2>Meet the<br /><i>signal-born.</i></h2></div><p className="section-intro">A Hollywood-scale collision of engineering, courage, and imagination. Three original archetypes. One arena for ideas.</p></Reveal><div className="character-grid"><Reveal delay={0.04}><article className="character-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${orbitForgeImage})` }} /><div className="character-meta"><span>ARCHETYPE / 01</span><b>ORBIT FORGE</b><p>The builder who turns pressure into power.</p></div></article></Reveal><Reveal delay={0.08}><article className="character-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${stormCallerImage})` }} /><div className="character-meta"><span>ARCHETYPE / 02</span><b>STORM CALLER</b><p>The force that makes every signal audible.</p></div></article></Reveal><Reveal delay={0.12}><article className="character-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${tideWardenImage})` }} /><div className="character-meta"><span>ARCHETYPE / 03</span><b>TIDE WARDEN</b><p>The guardian who reads the current beneath the surface.</p></div></article></Reveal><Reveal delay={0.16}><article className="character-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${noirImage})` }} /><div className="character-meta"><span>ARCHETYPE / 04</span><b>NIGHT SIGNAL</b><p>The strategist who finds the hidden route.</p></div></article></Reveal><Reveal delay={0.2}><article className="character-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${mageImage})` }} /><div className="character-meta"><span>ARCHETYPE / 05</span><b>ASTRA VEIL</b><p>The dreamer who makes the impossible legible.</p></div></article></Reveal><Reveal delay={0.24}><article className="character-card horror-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${veilSisterImage})` }} /><div className="character-meta"><span>HORROR FILE / 06</span><b>VEIL SISTER</b><p>A silent apparition at the edge of the frame.</p></div></article></Reveal><Reveal delay={0.28}><article className="character-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${arcaneStudentImage})` }} /><div className="character-meta"><span>ARCHETYPE / 07</span><b>ASTRAL STUDENT</b><p>The one who maps impossible rooms with light.</p></div></article></Reveal><Reveal delay={0.32}><article className="character-card horror-card"><div className="character-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 35%, rgba(4,7,14,.96)), url(${arenaFlareImage})` }} /><div className="character-meta"><span>HORROR FILE / 08</span><b>THE LAST DOOR</b><p>Some portals should remain closed.</p></div></article></Reveal></div></section>
 
         <motion.section id="register" className="register-section section-pad" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .9 }}><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 27</strong></div></motion.section>
 
