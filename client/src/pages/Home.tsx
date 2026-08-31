@@ -3,7 +3,7 @@
  * This page uses a left-rail cinematic composition, voltage-blue signal light,
  * restrained amber accents, and purposeful motion that respects reduced-motion preferences.
  */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowDownRight,
@@ -30,6 +30,8 @@ const circuitImage = "/manus-storage/valiant-circuit-texture_fd9ec9a0.jpg";
 const mythicImage = "/manus-storage/valiant-mythic-arena_a4dfae4c.jpg";
 const locationImage = "/manus-storage/valiant-location-beacon_88c88ee8.jpg";
 const markImage = "/manus-storage/valiant-mark_55583ff8.png";
+const signalBandImage = "/manus-storage/valiant-signal-band_21293eaf.jpg";
+const arenaFlareImage = "/manus-storage/valiant-arena-flare_7fd97932.jpg";
 
 const events = {
   technical: [
@@ -62,6 +64,10 @@ function useCountdown() {
 
 function CornerMark() {
   return <span className="corner-mark" aria-hidden="true" />;
+}
+
+function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  return <motion.div className={className} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.72, delay, ease: [0.23, 1, 0.32, 1] }}>{children}</motion.div>;
 }
 
 function EventCard({ event, image }: { event: (typeof events.technical)[number]; image?: string }) {
@@ -149,14 +155,16 @@ export default function Home() {
         <section className="countdown-strip"><div><p className="eyebrow">NEXT TRANSMISSION</p><p className="strip-date"><CalendarDays size={16} /> 24 SEPTEMBER 2027 <span>•</span> SIVAKASI, TAMIL NADU</p></div><div className="countdown"><div><strong>{String(countdown.days).padStart(3, "0")}</strong><span>DAYS</span></div><b>:</b><div><strong>{String(countdown.hours).padStart(2, "0")}</strong><span>HRS</span></div><b>:</b><div><strong>{String(countdown.minutes).padStart(2, "0")}</strong><span>MIN</span></div><b>:</b><div><strong>{String(countdown.seconds).padStart(2, "0")}</strong><span>SEC</span></div></div></section>
 
         <section id="events" className="events-section section-pad">
-          <div className="section-head"><div><p className="eyebrow">TRANSMISSION 02 / THE PROGRAM</p><h2>Six ways to<br /><i>make a mark.</i></h2></div><p className="section-intro">A symposium is more than a stage. It is a room full of live wires, curious minds, and the moment an idea finds its voltage.</p></div>
-          <div className="event-group"><div className="group-label"><span>01</span><h3>Technical events</h3><p>Build. Present. Defend.</p></div><div className="event-grid">{events.technical.map((event) => <EventCard key={event.no} event={event} image={circuitImage} />)}</div></div>
-          <div className="event-group non-tech"><div className="group-label"><span>02</span><h3>Non-technical events</h3><p>Play. Decode. Escape.</p></div><div className="event-grid">{events.nonTechnical.map((event) => <EventCard key={event.no} event={event} image={mythicImage} />)}</div></div>
+          <Reveal className="section-head"><div><p className="eyebrow">TRANSMISSION 02 / THE PROGRAM</p><h2>Six ways to<br /><i>make a mark.</i></h2></div><p className="section-intro">A symposium is more than a stage. It is a room full of live wires, curious minds, and the moment an idea finds its voltage.</p></Reveal>
+          <Reveal className="cinema-band signal-band" delay={0.08}><div className="cinema-band-image" style={{ backgroundImage: `url(${signalBandImage})` }} /><div className="cinema-band-copy"><span className="eyebrow">LIVE FEED / TECHNICAL</span><strong>Build the signal.</strong><span>TRANSMISSION 02A</span></div></Reveal>
+          <motion.div className="event-group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>01</span><h3>Technical events</h3><p>Build. Present. Defend.</p></div><div className="event-grid">{events.technical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={circuitImage} /></motion.div>)}</div></motion.div>
+          <Reveal className="cinema-band arena-band" delay={0.06}><div className="cinema-band-image" style={{ backgroundImage: `url(${arenaFlareImage})` }} /><div className="cinema-band-copy"><span className="eyebrow">LIVE FEED / AFTER DARK</span><strong>Play outside the frame.</strong><span>TRANSMISSION 02B</span></div></Reveal>
+          <motion.div className="event-group non-tech" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>02</span><h3>Non-technical events</h3><p>Play. Decode. Escape.</p></div><div className="event-grid">{events.nonTechnical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={mythicImage} /></motion.div>)}</div></motion.div>
         </section>
 
-        <section id="register" className="register-section section-pad"><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 27</strong></div></section>
+        <motion.section id="register" className="register-section section-pad" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .9 }}><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 27</strong></div></motion.section>
 
-        <section id="location" className="location-section section-pad"><div className="location-copy"><p className="eyebrow">TRANSMISSION 04 / COORDINATES</p><h2>Find the<br /><i>signal.</i></h2><div className="location-address"><MapPin size={18} /><p><strong>AAA College of Engineering and Technology</strong><br />Amathur, Sivakasi<br />Tamil Nadu, India</p></div><a className="text-cta" href="https://www.google.com/maps/search/?api=1&query=AAA+College+of+Engineering+and+Technology+Amathur+Sivakasi" target="_blank" rel="noreferrer">Open coordinates <ArrowUpRight size={15} /></a></div><div className="map-panel" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,8,15,.18), rgba(5,8,15,.42)), url(${locationImage})` }}><div className="map-grid" /><div className="map-pin"><span /><b>AAA CET</b></div><span className="map-coord">9°24' N / 77°48' E</span></div></section>
+        <motion.section id="location" className="location-section section-pad" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .8, ease: [0.23, 1, 0.32, 1] }}><div className="location-copy"><p className="eyebrow">TRANSMISSION 04 / COORDINATES</p><h2>Find the<br /><i>signal.</i></h2><div className="location-address"><MapPin size={18} /><p><strong>AAA College of Engineering and Technology</strong><br />Amathur, Sivakasi<br />Tamil Nadu, India</p></div><a className="text-cta" href="https://www.google.com/maps/search/?api=1&query=AAA+College+of+Engineering+and+Technology+Amathur+Sivakasi" target="_blank" rel="noreferrer">Open coordinates <ArrowUpRight size={15} /></a></div><div className="map-panel" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,8,15,.18), rgba(5,8,15,.42)), url(${locationImage})` }}><div className="map-grid" /><div className="map-pin"><span /><b>AAA CET</b></div><span className="map-coord">9°24' N / 77°48' E</span></div></motion.section>
       </main>
       <footer className="footer"><div className="footer-brand"><img src={markImage} alt="" /><span>VALIANT <b>2027</b></span></div><p>Department of ECE<br />AAA College of Engineering and Technology</p><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={18} /></a><a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a></div><span className="footer-note">MADE FOR THE BOLD / © 2027</span></footer>
     </div>
