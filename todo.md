@@ -7,3 +7,6 @@
 - [x] Add scroll-triggered section reveals and smoother transition moments across the page.
 - [x] Run checks, capture representative desktop/mobile previews, and save an updated checkpoint.
 - [x] Re-run checks and save a new checkpoint after the crossover enhancement.
+- [x] Generate original counterparts for the requested superhero, fantasy, and horror archetypes.
+- [x] Add the expanded character and horror gallery to the microsite.
+- [x] Re-run checks, previews, and checkpoint save for the expanded gallery.
