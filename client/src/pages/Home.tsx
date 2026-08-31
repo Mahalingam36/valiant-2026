@@ -17,7 +17,6 @@ import {
   Instagram,
   MapPin,
   Menu,
-  Pause,
   Radio,
   Sparkles,
   Trophy,
@@ -129,7 +128,6 @@ function EventCard({ event, image }: { event: (typeof events.technical)[number];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [soundOn, setSoundOn] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const countdown = useCountdown();
 
@@ -161,7 +159,7 @@ export default function Home() {
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Main navigation">
           <button onClick={() => scrollTo("home")}>Home</button><button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("technical")}>Technical</button><button onClick={() => scrollTo("non-technical")}>Non-Technical</button><button onClick={() => scrollTo("contact")}>Contact</button><button className="nav-register" onClick={() => scrollTo("register")}>Register <ArrowUpRight size={13} /></button>
         </nav>
-        <div className="top-actions"><button className="sound-toggle" onClick={() => setSoundOn(!soundOn)} aria-label={soundOn ? "Mute ambient sound" : "Enable ambient sound"}>{soundOn ? <Pause size={15} /> : <CirclePlay size={15} />} <span>{soundOn ? "SOUND ON" : "SOUND OFF"}</span></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></div>
+        <div className="top-actions"><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></div>
       </header>
 
       <main>

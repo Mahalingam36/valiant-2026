@@ -22,3 +22,6 @@
 - [x] Verify the detail interactions on desktop/mobile and save a new checkpoint.
 - [x] Style the top Register navigation item as the lower registration CTA button.
 - [x] Verify the header CTA across desktop/mobile and save a new checkpoint.
+- [x] Remove the sound control and related state from the top navigation.
+- [x] Produce and validate a standalone single-HTML export if feasible.
+- [x] Verify the revised header and save a new checkpoint.
