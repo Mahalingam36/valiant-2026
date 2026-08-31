@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* VALIANT 2027 / Midnight Blockbuster: ink-black cinema, voltage-blue signal light, amber date accents, asymmetric stage composition. */
+/* VALIANT 2026 / Midnight Blockbuster: ink-black cinema, voltage-blue signal light, amber date accents, asymmetric stage composition. */
 @custom-variant dark (&:is(.dark *));
 @theme inline { --radius-sm: 0.15rem; --radius-md: 0.25rem; --radius-lg: 0.35rem; --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card); --color-card-foreground: var(--card-foreground); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground); --color-border: var(--border); --color-ring: var(--ring); }
 :root { --background: #05080f; --foreground: #eef3f8; --card: #0b111c; --card-foreground: #eef3f8; --primary: #4da8ff; --primary-foreground: #03101d; --border: rgba(173,210,245,.16); --ring: #4da8ff; --ink: #05080f; --navy: #091321; --blue: #4da8ff; --amber: #f1b870; --muted: #93a3b5; --display: 'Space Grotesk', sans-serif; --body: 'DM Sans', sans-serif; }

@@ -14,3 +14,6 @@
 - [x] Remove the standalone all-characters section and verify the revised layout.
 - [x] Move the corner-docked Drive imagery closer to the main site content while preserving readability.
 - [x] Verify desktop/mobile placement and save a new checkpoint.
+- [x] Update the header navigation to Home, Events, Technical, Non-Technical, Contact, and Register.
+- [x] Change all visible event branding and countdown logic from 2027 to 2026.
+- [x] Verify the new anchors and save a new checkpoint.

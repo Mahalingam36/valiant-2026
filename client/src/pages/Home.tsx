@@ -1,5 +1,5 @@
 /**
- * VALIANT 2027 / Midnight Blockbuster direction.
+ * VALIANT 2026 / Midnight Blockbuster direction.
  * This page uses a left-rail cinematic composition, voltage-blue signal light,
  * restrained amber accents, and purposeful motion that respects reduced-motion preferences.
  */
@@ -59,7 +59,7 @@ const events = {
 };
 
 function useCountdown() {
-  const target = useMemo(() => new Date("2027-09-24T09:00:00+05:30").getTime(), []);
+  const target = useMemo(() => new Date("2026-09-24T09:00:00+05:30").getTime(), []);
   const [now, setNow] = useState(Date.now());
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -132,7 +132,7 @@ export default function Home() {
   return (
     <div className={`site-shell ${loaded ? "is-loaded" : ""}`}>
       <div className="loader" aria-hidden={loaded}>
-        <div className="loader-inner"><img src={markImage} alt="" /><span>INITIALIZING SIGNAL</span><div className="loader-line"><i /></div><strong>VALIANT / 2027</strong></div>
+        <div className="loader-inner"><img src={markImage} alt="" /><span>INITIALIZING SIGNAL</span><div className="loader-line"><i /></div><strong>VALIANT / 2026</strong></div>
       </div>
       <div className="grain" aria-hidden="true" />
       <div className="ambient-dock ambient-dock-left" aria-hidden="true"><img className="dock-image dock-spider" src={driveImages.spiderman} alt="" /><img className="dock-image dock-wonder" src={driveImages.wonderwoman} alt="" /><img className="dock-image dock-clown" src={driveImages.clown} alt="" /><img className="dock-image dock-harry" src={driveImages.harrypotter} alt="" /></div>
@@ -143,9 +143,9 @@ export default function Home() {
         <span className="rail-caption">ECE • AAA CET</span>
       </aside>
       <header className="topbar">
-        <button className="wordmark" onClick={() => scrollTo("home")} aria-label="Back to home"><img src={markImage} alt="" /><span>VALIANT</span><b>2027</b></button>
+        <button className="wordmark" onClick={() => scrollTo("home")} aria-label="Back to home"><img src={markImage} alt="" /><span>VALIANT</span><b>2026</b></button>
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Main navigation">
-          <button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("register")}>Register</button><button onClick={() => scrollTo("location")}>Location</button>
+          <button onClick={() => scrollTo("home")}>Home</button><button onClick={() => scrollTo("events")}>Events</button><button onClick={() => scrollTo("technical")}>Technical</button><button onClick={() => scrollTo("non-technical")}>Non-Technical</button><button onClick={() => scrollTo("contact")}>Contact</button><button onClick={() => scrollTo("register")}>Register</button>
         </nav>
         <div className="top-actions"><button className="sound-toggle" onClick={() => setSoundOn(!soundOn)} aria-label={soundOn ? "Mute ambient sound" : "Enable ambient sound"}>{soundOn ? <Pause size={15} /> : <CirclePlay size={15} />} <span>{soundOn ? "SOUND ON" : "SOUND OFF"}</span></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></div>
       </header>
@@ -156,32 +156,32 @@ export default function Home() {
           <div className="hero-beam" />
           <div className="hero-copy">
             <motion.p className="eyebrow reveal" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.25 }}>TRANSMISSION 01 / THE SIGNAL IS LIVE</motion.p>
-            <motion.h1 className="hero-title reveal" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.38, duration: .7 }}><span>VALIANT</span><em>2027</em></motion.h1>
+            <motion.h1 className="hero-title reveal" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.38, duration: .7 }}><span>VALIANT</span><em>2026</em></motion.h1>
             <motion.p className="hero-subtitle reveal" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.62 }}>National Level<br /><strong>Technical Symposium</strong></motion.p>
             <motion.div className="hero-actions reveal" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.76 }}><button className="primary-cta" onClick={() => scrollTo("register")}>Enter the arena <ArrowUpRight size={17} /></button><button className="text-cta" onClick={() => scrollTo("events")}>Explore events <ChevronRight size={15} /></button></motion.div>
           </div>
           <div className="hero-dossier">
-            <p className="eyebrow">LIVE DOSSIER / 24.09.27</p><div className="dossier-rule" /><p className="dossier-title">Where<br /><strong>ideas become</strong><br />impact.</p><div className="dossier-meta"><span>DEPARTMENT OF ECE</span><span>AAA CET / SIVAKASI</span></div>
+            <p className="eyebrow">LIVE DOSSIER / 24.09.26</p><div className="dossier-rule" /><p className="dossier-title">Where<br /><strong>ideas become</strong><br />impact.</p><div className="dossier-meta"><span>DEPARTMENT OF ECE</span><span>AAA CET / SIVAKASI</span></div>
           </div>
           <div className="hero-scroll" onClick={() => scrollTo("events")}><span>Scroll to discover</span><ArrowDownRight size={17} /></div>
         </section>
 
-        <section className="countdown-strip"><div><p className="eyebrow">NEXT TRANSMISSION</p><p className="strip-date"><CalendarDays size={16} /> 24 SEPTEMBER 2027 <span>•</span> SIVAKASI, TAMIL NADU</p></div><div className="countdown"><div><strong>{String(countdown.days).padStart(3, "0")}</strong><span>DAYS</span></div><b>:</b><div><strong>{String(countdown.hours).padStart(2, "0")}</strong><span>HRS</span></div><b>:</b><div><strong>{String(countdown.minutes).padStart(2, "0")}</strong><span>MIN</span></div><b>:</b><div><strong>{String(countdown.seconds).padStart(2, "0")}</strong><span>SEC</span></div></div></section>
+        <section className="countdown-strip"><div><p className="eyebrow">NEXT TRANSMISSION</p><p className="strip-date"><CalendarDays size={16} /> 24 SEPTEMBER 2026 <span>•</span> SIVAKASI, TAMIL NADU</p></div><div className="countdown"><div><strong>{String(countdown.days).padStart(3, "0")}</strong><span>DAYS</span></div><b>:</b><div><strong>{String(countdown.hours).padStart(2, "0")}</strong><span>HRS</span></div><b>:</b><div><strong>{String(countdown.minutes).padStart(2, "0")}</strong><span>MIN</span></div><b>:</b><div><strong>{String(countdown.seconds).padStart(2, "0")}</strong><span>SEC</span></div></div></section>
 
         <section id="events" className="events-section section-pad">
           <Reveal className="section-head"><div><p className="eyebrow">TRANSMISSION 02 / THE PROGRAM</p><h2>Six ways to<br /><i>make a mark.</i></h2></div><p className="section-intro">A symposium is more than a stage. It is a room full of live wires, curious minds, and the moment an idea finds its voltage.</p></Reveal>
           <Reveal className="cinema-band signal-band" delay={0.08}><div className="cinema-band-image" style={{ backgroundImage: `url(${signalBandImage})` }} /><div className="cinema-band-copy"><span className="eyebrow">LIVE FEED / TECHNICAL</span><strong>Build the signal.</strong><span>TRANSMISSION 02A</span></div></Reveal>
-          <motion.div className="event-group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>01</span><h3>Technical events</h3><p>Build. Present. Defend.</p></div><div className="event-grid">{events.technical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={circuitImage} /></motion.div>)}</div></motion.div>
+          <motion.div id="technical" className="event-group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>01</span><h3>Technical events</h3><p>Build. Present. Defend.</p></div><div className="event-grid">{events.technical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={circuitImage} /></motion.div>)}</div></motion.div>
           <Reveal className="cinema-band arena-band" delay={0.06}><div className="cinema-band-image" style={{ backgroundImage: `url(${arenaFlareImage})` }} /><div className="cinema-band-copy"><span className="eyebrow">LIVE FEED / AFTER DARK</span><strong>Play outside the frame.</strong><span>TRANSMISSION 02B</span></div></Reveal>
-          <motion.div className="event-group non-tech" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>02</span><h3>Non-technical events</h3><p>Play. Decode. Escape.</p></div><div className="event-grid">{events.nonTechnical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={mythicImage} /></motion.div>)}</div></motion.div>
+          <motion.div id="non-technical" className="event-group non-tech" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .7, ease: [0.23, 1, 0.32, 1] }}><div className="group-label"><span>02</span><h3>Non-technical events</h3><p>Play. Decode. Escape.</p></div><div className="event-grid">{events.nonTechnical.map((event, index) => <motion.div key={event.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * .08, duration: .5 }}><EventCard event={event} image={mythicImage} /></motion.div>)}</div></motion.div>
         </section>
 
 
-        <motion.section id="register" className="register-section section-pad" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .9 }}><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 27</strong></div></motion.section>
+        <motion.section id="register" className="register-section section-pad" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .9 }}><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 26</strong></div></motion.section>
 
-        <motion.section id="location" className="location-section section-pad" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .8, ease: [0.23, 1, 0.32, 1] }}><div className="location-copy"><p className="eyebrow">TRANSMISSION 04 / COORDINATES</p><h2>Find the<br /><i>signal.</i></h2><div className="location-address"><MapPin size={18} /><p><strong>AAA College of Engineering and Technology</strong><br />Amathur, Sivakasi<br />Tamil Nadu, India</p></div><a className="text-cta" href="https://www.google.com/maps/search/?api=1&query=AAA+College+of+Engineering+and+Technology+Amathur+Sivakasi" target="_blank" rel="noreferrer">Open coordinates <ArrowUpRight size={15} /></a></div><div className="map-panel" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,8,15,.18), rgba(5,8,15,.42)), url(${locationImage})` }}><div className="map-grid" /><div className="map-pin"><span /><b>AAA CET</b></div><span className="map-coord">9°24' N / 77°48' E</span></div></motion.section>
+        <motion.section id="contact" className="location-section section-pad" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .8, ease: [0.23, 1, 0.32, 1] }}><div className="location-copy"><p className="eyebrow">TRANSMISSION 04 / COORDINATES</p><h2>Find the<br /><i>signal.</i></h2><div className="location-address"><MapPin size={18} /><p><strong>AAA College of Engineering and Technology</strong><br />Amathur, Sivakasi<br />Tamil Nadu, India</p></div><a className="text-cta" href="https://www.google.com/maps/search/?api=1&query=AAA+College+of+Engineering+and+Technology+Amathur+Sivakasi" target="_blank" rel="noreferrer">Open coordinates <ArrowUpRight size={15} /></a></div><div className="map-panel" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,8,15,.18), rgba(5,8,15,.42)), url(${locationImage})` }}><div className="map-grid" /><div className="map-pin"><span /><b>AAA CET</b></div><span className="map-coord">9°24' N / 77°48' E</span></div></motion.section>
       </main>
-      <footer className="footer"><div className="footer-brand"><img src={markImage} alt="" /><span>VALIANT <b>2027</b></span></div><p>Department of ECE<br />AAA College of Engineering and Technology</p><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={18} /></a><a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a></div><span className="footer-note">MADE FOR THE BOLD / © 2027</span></footer>
+      <footer className="footer"><div className="footer-brand"><img src={markImage} alt="" /><span>VALIANT <b>2026</b></span></div><p>Department of ECE<br />AAA College of Engineering and Technology</p><div className="footer-social"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={18} /></a><a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a></div><span className="footer-note">MADE FOR THE BOLD / © 2026</span></footer>
     </div>
   );
 }
