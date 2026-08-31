@@ -12,3 +12,5 @@
 - [x] Re-run checks, previews, and checkpoint save for the expanded gallery.
 - [x] Import user-provided Drive assets from “valiant website” and place them as ambient corner visuals.
 - [x] Remove the standalone all-characters section and verify the revised layout.
+- [x] Move the corner-docked Drive imagery closer to the main site content while preserving readability.
+- [x] Verify desktop/mobile placement and save a new checkpoint.
