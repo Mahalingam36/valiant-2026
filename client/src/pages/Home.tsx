@@ -47,14 +47,14 @@ const driveImages = {
 
 const events = {
   technical: [
-    { no: "01", title: "Paper Presentation", tag: "IDEAS / STAGE", desc: "Turn a sharp question into a story the room cannot ignore.", icon: Radio },
-    { no: "02", title: "Circuit Craze", tag: "BUILD / SPEED", desc: "Read the signal. Route the current. Make the board sing.", icon: Zap },
-    { no: "03", title: "Technical Quiz", tag: "KNOWLEDGE / LIVE", desc: "Three rounds. Rapid fire, picture round, true or false blitz.", icon: Trophy },
+    { no: "01", title: "Paper Presentation", tag: "IDEAS / STAGE", desc: "Turn a sharp question into a story the room cannot ignore.", icon: Radio, venue: "ECE Seminar Hall", time: "09:30 AM – 11:00 AM", team: "1–2 Members", details: "Present innovative ideas, research work, technical solutions, or futuristic concepts related to engineering and technology.", rules: ["Maximum 10 slides.", "Presentation duration: 7 minutes.", "Q&A: 3 minutes.", "Topics must be technical.", "Bring presentation in PPT/PDF format."] },
+    { no: "02", title: "Circuit Craze", tag: "BUILD / SPEED", desc: "Read the signal. Route the current. Make the board sing.", icon: Zap, venue: "Electronics Laboratory", time: "11:15 AM – 12:30 PM", team: "Individual", details: "A practical electronics challenge testing circuit analysis, troubleshooting, component identification, and problem-solving skills.", rules: ["Participants must complete assigned tasks within the given time.", "Judging is based on accuracy and completion time.", "Electronic components will be provided."] },
+    { no: "03", title: "Technical Quiz", tag: "KNOWLEDGE / LIVE", desc: "Three rounds. Rapid fire, picture round, true or false blitz.", icon: Trophy, venue: "Smart Classroom", time: "01:30 PM – 03:00 PM", team: "2 Members", details: "Compete in multiple exciting rounds designed to test technical knowledge, logical thinking, and engineering fundamentals.", rounds: [{ name: "Round 1: Rapid Fire", points: "30 seconds per team. Answer maximum questions; speed and accuracy matter." }, { name: "Round 2: Picture Round", points: "Identify technical terms, inventions, scientists, electronic components, and technologies from images." }, { name: "Round 3: True or False Blitz", points: "Quick technical facts. Decide whether each statement is True or False." }], rules: ["No electronic gadgets allowed.", "Quiz master's decision is final."] },
   ],
   nonTechnical: [
-    { no: "04", title: "Anime Arena", tag: "CULTURE / PLAY", desc: "A neon collision of fandom, recall, and arena energy.", icon: Sparkles },
-    { no: "05", title: "Escape Room", tag: "PUZZLE / TEAM", desc: "The gate is locked. The room is talking. Find the way out.", icon: Compass },
-    { no: "06", title: "MazeBound", tag: "TACTICS / RACE", desc: "Choose a path before the path chooses you.", icon: CirclePlay },
+    { no: "04", title: "Anime Arena", tag: "CULTURE / PLAY", desc: "A neon collision of fandom, recall, and arena energy.", icon: Sparkles, venue: "Mini Auditorium", time: "10:00 AM – 11:30 AM", team: "Individual", details: "A fun event for anime enthusiasts featuring anime trivia, character identification, logo guessing, and themed challenges.", rules: ["Questions will be based on popular anime series.", "Fastest correct answers score points."] },
+    { no: "05", title: "Escape Room", tag: "PUZZLE / TEAM", desc: "The gate is locked. The room is talking. Find the way out.", icon: Compass, venue: "Innovation Lab", time: "01:00 PM – 02:30 PM", team: "3–5 Members", details: "Work together to solve clues, decode puzzles, and escape the room before time runs out.", rules: ["Time Limit: 30 minutes.", "Teamwork is mandatory.", "No external assistance allowed."] },
+    { no: "06", title: "MazeBound", tag: "TACTICS / RACE", desc: "Choose a path before the path chooses you.", icon: CirclePlay, venue: "Open Ground / Indoor Arena", time: "03:00 PM – 04:00 PM", team: "Individual", details: "Navigate through a challenging maze filled with checkpoints and obstacles to reach the finish line.", rules: ["Fastest completion time wins.", "Follow all checkpoint instructions.", "Any shortcut leads to disqualification."] },
   ],
 };
 
@@ -83,33 +83,47 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 }
 
 function EventCard({ event, image }: { event: (typeof events.technical)[number]; image?: string }) {
+  const [open, setOpen] = useState(false);
   const Icon = event.icon;
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(useSpring(y, { stiffness: 180, damping: 20 }), [-100, 100], [4, -4]);
   const rotateY = useTransform(useSpring(x, { stiffness: 180, damping: 20 }), [-100, 100], [-4, 4]);
   return (
-    <motion.article
-      className="event-card group"
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        x.set(e.clientX - rect.left - rect.width / 2);
-        y.set(e.clientY - rect.top - rect.height / 2);
-      }}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
-      whileTap={{ scale: 0.985 }}
-    >
-      {image && <div className="card-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 20%, rgba(4,7,14,.92)), url(${image})` }} />}
-      <div className="event-card-top"><span><b className="dossier-code">DOSSIER</b> {event.no}</span><Icon size={18} strokeWidth={1.4} /></div>
-      <div className="event-card-content">
-        <p className="eyebrow">{event.tag}</p>
-        <h3>{event.title}</h3>
-        <p className="event-desc">{event.desc}</p>
-        <span className="event-link">View event brief <ArrowUpRight size={15} /></span>
-      </div>
-      <CornerMark />
-    </motion.article>
+    <>
+      <motion.article
+        className="event-card group"
+        style={{ rotateX, rotateY, transformPerspective: 900 }}
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          x.set(e.clientX - rect.left - rect.width / 2);
+          y.set(e.clientY - rect.top - rect.height / 2);
+        }}
+        onMouseLeave={() => { x.set(0); y.set(0); }}
+        whileTap={{ scale: 0.985 }}
+      >
+        {image && <div className="card-image" style={{ backgroundImage: `linear-gradient(180deg, transparent 20%, rgba(4,7,14,.92)), url(${image})` }} />}
+        <div className="event-card-top"><span><b className="dossier-code">DOSSIER</b> {event.no}</span><Icon size={18} strokeWidth={1.4} /></div>
+        <div className="event-card-content">
+          <p className="eyebrow">{event.tag}</p>
+          <h3>{event.title}</h3>
+          <p className="event-desc">{event.desc}</p>
+          <button className="event-link" onClick={() => setOpen(true)} aria-haspopup="dialog">View event brief <ArrowUpRight size={15} /></button>
+        </div>
+        <CornerMark />
+      </motion.article>
+      {open && <div className="event-modal-backdrop" role="presentation" onClick={() => setOpen(false)}>
+        <motion.div className="event-modal" role="dialog" aria-modal="true" aria-labelledby={`event-${event.no}`} initial={{ opacity: 0, y: 14, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} onClick={(e) => e.stopPropagation()}>
+          <button className="event-modal-close" onClick={() => setOpen(false)} aria-label={`Close ${event.title} details`}><X size={19} /></button>
+          <p className="eyebrow">DOSSIER / {event.no} / EVENT BRIEF</p>
+          <h3 id={`event-${event.no}`}>{event.title}</h3>
+          <div className="event-facts"><span><b>VENUE</b>{event.venue}</span><span><b>TIME</b>{event.time}</span><span><b>TEAM SIZE</b>{event.team}</span></div>
+          <p className="event-modal-description">{event.details}</p>
+          {event.rounds && <div className="event-modal-block"><b className="event-block-label">ROUNDS</b>{event.rounds.map((round) => <div className="event-round" key={round.name}><strong>{round.name}</strong><span>{round.points}</span></div>)}</div>}
+          <div className="event-modal-block"><b className="event-block-label">RULES</b><ul>{event.rules.map((rule) => <li key={rule}>{rule}</li>)}</ul></div>
+        </motion.div>
+      </div>}
+    </>
   );
 }
 
@@ -138,7 +152,7 @@ export default function Home() {
       <div className="ambient-dock ambient-dock-left" aria-hidden="true"><img className="dock-image dock-spider" src={driveImages.spiderman} alt="" /><img className="dock-image dock-wonder" src={driveImages.wonderwoman} alt="" /><img className="dock-image dock-clown" src={driveImages.clown} alt="" /><img className="dock-image dock-harry" src={driveImages.harrypotter} alt="" /></div>
       <div className="ambient-dock ambient-dock-right" aria-hidden="true"><img className="dock-image dock-iron" src={driveImages.ironman} alt="" /><img className="dock-image dock-thor" src={driveImages.thor} alt="" /><img className="dock-image dock-aqua" src={driveImages.aquaman} alt="" /><img className="dock-image dock-nun" src={driveImages.nun} alt="" /></div>
       <aside className="signal-rail" aria-label="Section progress">
-        <div className="rail-brand"><img src={markImage} alt="Valiant mark" /><span>VLT / 27</span></div>
+        <div className="rail-brand"><img src={markImage} alt="Valiant mark" /><span>VLT / 26</span></div>
         <div className="rail-line"><i /><span className="rail-tick tick-1">01</span><span className="rail-tick tick-2">02</span><span className="rail-tick tick-3">03</span><span className="rail-tick tick-4">04</span></div>
         <span className="rail-caption">ECE • AAA CET</span>
       </aside>
@@ -177,7 +191,7 @@ export default function Home() {
         </section>
 
 
-        <motion.section id="register" className="register-section section-pad" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .9 }}><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 26</strong></div></motion.section>
+        <motion.section id="register" className="register-section section-pad" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .9 }}><div className="register-art" style={{ backgroundImage: `url(${heroImage})` }} /><div className="register-copy"><p className="eyebrow">TRANSMISSION 03 / YOUR MOVE</p><h2>Bring the idea.<br /><i>Enter the arena.</i></h2><p>Registration opens the gate to a day of technical intensity, unexpected detours, and new people worth remembering.</p><div className="registration-details"><div><b>REPORTING</b><span>09:00 AM / 24 SEPTEMBER 2026</span></div><div><b>VENUE</b><span>AAA College of Engineering and Technology, Amathur, Sivakasi</span></div><div><b>PRIZES</b><span>Certificates + trophies for first and second prize winners. Participation certificate for all registered participants.</span></div></div><a className="primary-cta" href="https://forms.google.com/" target="_blank" rel="noreferrer">Register now <ExternalLink size={16} /></a></div><div className="register-stamp"><span>OPEN</span><strong>REG / 26</strong></div></motion.section>
 
         <motion.section id="contact" className="location-section section-pad" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: .8, ease: [0.23, 1, 0.32, 1] }}><div className="location-copy"><p className="eyebrow">TRANSMISSION 04 / COORDINATES</p><h2>Find the<br /><i>signal.</i></h2><div className="location-address"><MapPin size={18} /><p><strong>AAA College of Engineering and Technology</strong><br />Amathur, Sivakasi<br />Tamil Nadu, India</p></div><a className="text-cta" href="https://www.google.com/maps/search/?api=1&query=AAA+College+of+Engineering+and+Technology+Amathur+Sivakasi" target="_blank" rel="noreferrer">Open coordinates <ArrowUpRight size={15} /></a></div><div className="map-panel" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,8,15,.18), rgba(5,8,15,.42)), url(${locationImage})` }}><div className="map-grid" /><div className="map-pin"><span /><b>AAA CET</b></div><span className="map-coord">9°24' N / 77°48' E</span></div></motion.section>
       </main>

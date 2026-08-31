@@ -17,3 +17,6 @@
 - [x] Update the header navigation to Home, Events, Technical, Non-Technical, Contact, and Register.
 - [x] Change all visible event branding and countdown logic from 2027 to 2026.
 - [x] Verify the new anchors and save a new checkpoint.
+- [x] Add supplied venue, time, team size, descriptions, rules, and quiz rounds to each matching event.
+- [x] Add prize details, reporting time, and venue information using the existing 2026 date.
+- [x] Verify the detail interactions on desktop/mobile and save a new checkpoint.
